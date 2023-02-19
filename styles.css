@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+  font-family: "Source Code Pro", monospace;
+}
+
+.btn {
+  border: 2px solid black;
+  display: inline;
+  padding: 0.5em;
+  transition: transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.image-container {
+  image-rendering: pixelated;
+}
+
+/* containers */
+
+#app-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  height: 75vh;
+}
+
+#pokedex {
+  flex-basis: 40%;
+  background-color: rgb(232, 56, 56);
+  padding: 0.5em;
+  border: 2px solid rgb(111, 35, 35);
+}
+
+#catch-list {
+  padding: 0.5em;
+  background-image: url("images/450px-Hoenn_Route_110.png");
+  background-size: cover;
+}
+
+#caught-list {
+  padding: 0.5em;
+  background: linear-gradient(
+    to right,
+    rgb(162, 162, 162) 18%,
+    rgb(130, 130, 130) 18% 20%,
+    rgb(162, 162, 162) 20% 21%,
+    rgb(130, 130, 130) 21% 23%,
+    rgb(162, 162, 162) 24% 30%,
+    rgb(130, 130, 130) 31% 43%,
+    rgb(162, 162, 162) 43% 100%
+  );
+}
