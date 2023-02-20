@@ -152,3 +152,5 @@ const pokemonArray = [
   { name: "dragonite", url: "https://pokeapi.co/api/v2/pokemon/149/" },
   { name: "mewtwo", url: "https://pokeapi.co/api/v2/pokemon/150/" },
 ];
+
+export { pokemonArray };

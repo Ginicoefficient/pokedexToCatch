@@ -1,5 +1,5 @@
-//fetch a pokemon and display some information about them
-let pokemonData = "";
+import { pokemonArray } from "./data.js";
+const dsTopContainer = document.getElementById("top-ds-container");
 const getPokemonBtn = document.getElementById("get-pokemon-btn");
 
 //just doing this so the fetch won't happen until I click a button
@@ -18,8 +18,22 @@ const getPokemonBtn = document.getElementById("get-pokemon-btn");
 //     });
 // });
 
-//array of objects holding all pokemon ids and names [DONE]
-//map array onto html array, join, set inner html of pokedex
+function pokemonSelectorList() {
+  //map array onto html array, join, set inner html of pokedex
+  //divs with pokemon name and id
+  const selectorHtml = pokemonArray
+    .map((pokemon, index) => {
+      return `
+        <div class="single-dex-entry" id="${index + 1}">
+            <div class="pokemon-id">${index + 1}</div>
+            <div class="pokemon-name">${pokemon.name}</div>
+        </div>`;
+    })
+    .join("");
+  dsTopContainer.innerHTML = selectorHtml;
+}
+
+pokemonSelectorList();
 
 //pokemon class could probably make to render specific elements of pokemon information
 //secondary screen - when you click on a pokemon it fetches their information in detail
