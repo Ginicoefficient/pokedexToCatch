@@ -18,11 +18,11 @@ p {
   transform: scale(0.98);
 }
 
+/*containers */
+
 .image-container {
   image-rendering: pixelated;
 }
-
-/* containers */
 
 #app-container {
   display: flex;
@@ -63,18 +63,25 @@ p {
 
 .single-dex-entry {
   display: flex;
+  flex: stretch;
   background-color: rgb(181, 207, 191);
   gap: 1em;
   padding: 0.1em;
   border: 1px dotted rgb(150, 163, 155);
   border-radius: 3px;
+  cursor: pointer;
 }
+.single-dex-entry:hover {
+  background-color: rgb(150, 163, 155);
+}
+/* Catch-list */
 
 #catch-list {
   background-image: url("images/450px-Hoenn_Route_110.png");
   background-size: cover;
 }
 
+/* Caught List */
 #caught-list {
   background: linear-gradient(
     to right,
