@@ -2,16 +2,13 @@ let pokeObjects = [];
 const dsTopContainer = document.getElementById("top-ds-container");
 
 async function load() {
-  if (!localStorage.getItem("storedPokemonOjbects")) {
-    const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/?limit=150"
-    );
+  const localStorageValue = localStorage.getItem("storedPokeObjects");
+  if (!localStorageValue) {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=15");
     const data = await response.json();
-
     pokeObjects = data.results;
   } else {
-    let pokeObjects = JSON.parse(localStorage.getItem("storedPokemonObjects"));
-    JSON.stringify(pokeObjects);
+    pokeObjects = JSON.parse(localStorage.getItem("storedPokeObjects"));
   }
   pokemonSelectorList();
 }
@@ -19,7 +16,7 @@ load();
 
 //run after updating pokeObject
 function updateLocalStorage() {
-  localStorage.setItem("storedPokemonObjects", JSON.stringify(pokeObjects));
+  localStorage.setItem("storedPokeObjects", JSON.stringify(pokeObjects));
 }
 
 function pokemonSelectorList() {
@@ -41,18 +38,42 @@ function pokemonSelectorList() {
 
 //event listener looking for clicks (generally)
 document.addEventListener("click", (e) => {
-  if (e.target.dataset.id) {
-    console.log(e.target);
-    //run function that grabs id of target, fetches pokemon info/caches
-    //send e.target.dataset.id to the function for id string
+  if (
+    e.target.classList.contains("single-dex-entry") ||
+    e.target.parentElement.classList.contains("single-dex-entry")
+  ) {
+    displayPokeObject(e.target.dataset.id);
   }
 });
 
-const displayPokeObject = (id) => {
-  //gets id, checks if info is in local storage object, then render or fetch/render
-  //in bottom of dex
-  //add button will be here rendered with pokemon ID
-};
+async function displayPokeObject(id) {
+  let pokemonCard = "";
+  if (!pokeObjects[id - 1].detailedInfo) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const data = await response.json();
+    pokemonCard = data;
+    pokeObjects[id - 1].detailedInfo = pokemonCard;
+    updateLocalStorage();
+  } else {
+    pokemonCard = pokeObjects[id - 1].detailedInfo;
+  }
+  //make a property on each pokeObject that holds html?? Maybe
+  //multiple types on a pokemon requires mapping
+
+  const pokemonCardHtml = `
+  <div>${pokemonCard.name}
+  ${pokemonCard.height}
+  ${pokemonCard.weight}
+  ${pokemonCard.types[0].type.name}
+  <img src="${pokemonCard.sprites.versions["generation-vi"]["omegaruby-alphasapphire"]["front_default"]}"/>
+  </div>`;
+
+  document.getElementById("bottom-ds-container").innerHTML = pokemonCardHtml;
+}
+
+//gets id, checks if info is in local storage object, then render or fetch/render
+//in bottom of dex
+//add button will be here rendered with pokemon ID
 
 const addPokemonToCatch = (id) => {
   console.log(id);
