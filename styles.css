@@ -1,9 +1,10 @@
 body {
-  margin: 0;
-  font-family: "Press Start 2P", cursive;
-  font-family: "Source Code Pro", monospace;
   display: flex;
   justify-content: center;
+  font-family: "Press Start 2P", cursive;
+  font-family: "Source Code Pro", monospace;
+  margin: 0;
+  box-sizing: border-box;
 }
 p {
   margin: 0;
@@ -12,13 +13,16 @@ p {
 
 .btn {
   border: 2px solid black;
-  display: inline;
-  padding: 0.5em;
+  box-shadow: 2px 0px 0px rgb(150, 163, 155);
+  margin: 0.5em;
   transition: transform 0.2s;
 }
 
 .btn:active {
-  transform: scale(0.96);
+  transform: scale(0.9);
+}
+.btn:hover {
+  background-color: rgb(150, 163, 155);
 }
 
 /*containers */
@@ -32,8 +36,9 @@ p {
   flex-direction: row;
   padding: 1em;
   height: 95vh;
-  max-width: 1400px;
   gap: 0.5em;
+  width: 100%;
+  max-width: 1000px;
 }
 
 #app-container > * {
@@ -41,17 +46,28 @@ p {
   padding: 0.5em;
 }
 
+h3 {
+  text-align: center;
+  padding: 0em 2em;
+}
 /* pokedex formatting */
 #pokedex {
-  flex-basis: 45%;
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(232, 56, 56);
   border: 2px solid rgb(111, 35, 35);
-  gap: 2em;
+  gap: 0.75em;
 }
 
+#pokedex-title {
+  background-color: rgb(190, 36, 36);
+  align-self: stretch;
+  text-align: center;
+  padding: 0.75em;
+  margin: 0;
+}
 .ds-container {
   width: 90%;
   border-radius: 0.5em;
@@ -71,7 +87,6 @@ p {
 .single-dex-entry {
   display: flex;
   flex: stretch;
-  height: 40%;
   background-color: rgb(181, 207, 191);
   gap: 1em;
   padding: 0.1em;
@@ -86,7 +101,7 @@ p {
 /* pokemon-card holds single card info about selected pokemon*/
 
 #bottom-ds-container {
-  height: 50%;
+  flex: 1 1 auto;
 }
 .pkm-card {
   display: flex;
@@ -98,26 +113,32 @@ p {
 .pkm-card-hdr {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-shrink: 0;
   background-color: rgb(181, 207, 191);
   border: 2px solid rgb(150, 163, 155);
   border-radius: 3px;
   margin-top: 1rem;
+  padding: 1em;
+  gap: 3px;
+  height: 5vh;
 }
 
 div.pkm-card-hdr > h3 {
-  margin: 0;
+  margin-right: 0.5em;
   padding: 0.25em 0.5em;
-  width: 40%;
-  font-size: calc(12px + 1.5vw);
+  font-size: calc(0.8rem + 1.5vw);
+}
+
+div.pkm-card-hdr > div {
+  padding: 0.5rem 0rem;
 }
 
 .pokemon-img {
-  width: 40%;
-  min-width: 100px;
-  max-width: 200px;
+  height: 100%;
   image-rendering: pixelated;
   padding: 0px;
+  margin-left: 0.1rem;
 }
 .pkm-card-body {
   display: flex;
@@ -127,17 +148,28 @@ div.pkm-card-hdr > h3 {
   background-color: rgb(181, 207, 191);
   border: 2px solid rgb(150, 163, 155);
 }
-.add-btn {
-  border: none;
+
+.pkm-card-footer {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 0.5em;
+  gap: 0.5em;
+}
+
+div.pkm-card-footer > * {
+  overflow: visible;
 }
 
 .fa-plus {
-  margin-top: 10px;
   color: rgba(48, 48, 48, 0.726);
-  border: 1px solid rgb(181, 207, 191);
+  border: 2px solid rgb(150, 163, 155);
+  background-color: rgb(181, 207, 191);
   border-radius: 50%;
   padding: 10px;
   transition: transform 0.2s;
+  margin: 0.5em;
 }
 
 /* Catch-list */

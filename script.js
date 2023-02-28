@@ -1,4 +1,6 @@
 let pokeObjects = [];
+let catchList = [];
+let caughtList = [];
 const dsTopContainer = document.getElementById("top-ds-container");
 
 async function load() {
@@ -46,6 +48,9 @@ document.addEventListener("click", (e) => {
   ) {
     displayPokeObject(e.target.dataset.id);
   }
+  if (e.target.classList.contains("add-btn")) {
+    addPokemonToCatchList(e.target.id);
+  }
 });
 
 async function displayPokeObject(id) {
@@ -68,39 +73,48 @@ async function displayPokeObject(id) {
   } else {
     pokemonCard = pokeObjects[id - 1];
   }
-  console.log(pokemonCard);
 
   //use info from fetch or local storage to render info about the selecte mon
   const pokemonCardHtml = `
   <div class="pkm-card">
     <div class="pkm-card-hdr pixel-corners">
         <h3>${pokemonCard.name}</h3>
-        <img class="pokemon-img" src="${pokemonCard.sprites.versions["generation-iii"]["emerald"]["front_default"]}"/></div>
+        <div><img class="pokemon-img" src="${pokemonCard.sprites.versions["generation-iii"]["emerald"]["front_default"]}"/></div></div>
     <hr class="divider">
     <div class="pkm-card-body pixel-corners">
         <div class="pkm-card-flavortext">${pokemonCard.flavor_text}</div>
     </div>
     <hr class="divider">
     <div class="pkm-card-footer">
-       Height: ${pokemonCard.height}in / 
-       Weight: ${pokemonCard.weight}lb / 
-       Type: ${pokemonCard.types[0].type.name}
-        <div><i class="fa-solid fa-plus btn add-btn" id=${pokemonCard.id}></i></div></div>
+      <div class="pokemon-physical-details"> Height: ${pokemonCard.height}in / 
+        Weight: ${pokemonCard.weight}lb / 
+        Type: ${pokemonCard.types[0].type.name}</div>
+      <div><i class="fa-solid fa-plus btn add-btn" id=${pokemonCard.id}></i></div></div>
     </div>`;
 
   document.getElementById("bottom-ds-container").innerHTML = pokemonCardHtml;
 }
 
 const addPokemonToCatchList = (id) => {
-  //grab id of parent container which is pokemon
-  //grab information pokemonobject and put in array of CatchPokemon
-  //give propoerty isCaught, set equal to false
-  //save CatchPokemon to local storage
-  console.log(id);
+  catchList.push(pokeObjects[id - 1]);
+  console.log(catchList.length);
+  renderCatchList();
 };
 
-//when added, pokemon object gets added to t0-catch array
-//put into local storage
+//render catch list into the two right columns
 
-//to catch list is an array holding info about pokemon, gets mapped to html
-//button to move them to your caught list (your pc!!)
+function renderCatchList() {
+  const htmlString = catchList
+    .map((pokemon) => {
+      console.log(pokemon);
+      return `
+    <div class="pkm-card-hdr pixel-corners">
+        <h3>${pokemon.name}</h3>
+    </div>`;
+    })
+    .join("");
+  document.getElementById("catch-list").innerHTML = htmlString;
+}
+
+//helper function that removes from catch list, adds to caught list
+//and re-renders both
