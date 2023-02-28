@@ -2,20 +2,23 @@ body {
   margin: 0;
   font-family: "Press Start 2P", cursive;
   font-family: "Source Code Pro", monospace;
+  display: flex;
+  justify-content: center;
 }
 p {
   margin: 0;
   padding: 0;
 }
+
 .btn {
   border: 2px solid black;
   display: inline;
   padding: 0.5em;
-  transition: transform 0.1s;
+  transition: transform 0.2s;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 /*containers */
@@ -28,7 +31,8 @@ p {
   display: flex;
   flex-direction: row;
   padding: 1em;
-  height: 75vh;
+  height: 95vh;
+  max-width: 1400px;
   gap: 0.5em;
 }
 
@@ -37,8 +41,9 @@ p {
   padding: 0.5em;
 }
 
+/* pokedex formatting */
 #pokedex {
-  flex-basis: 60%;
+  flex-basis: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,21 +54,24 @@ p {
 
 .ds-container {
   width: 90%;
-  height: 40%;
   border-radius: 0.5em;
   background-color: rgb(190, 36, 36);
 }
 
+/* holds scrollable list of pokemon */
 #top-ds-container {
   display: flex;
   flex-direction: column;
+  height: 35%;
   overflow: auto;
   padding: 0.5em;
 }
 
+/* single pokmeon in list inside of dex */
 .single-dex-entry {
   display: flex;
-  flex: stretch;git add
+  flex: stretch;
+  height: 40%;
   background-color: rgb(181, 207, 191);
   gap: 1em;
   padding: 0.1em;
@@ -74,6 +82,64 @@ p {
 .single-dex-entry:hover {
   background-color: rgb(150, 163, 155);
 }
+
+/* pokemon-card holds single card info about selected pokemon*/
+
+#bottom-ds-container {
+  height: 50%;
+}
+.pkm-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0em 1em;
+}
+
+.pkm-card-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(181, 207, 191);
+  border: 2px solid rgb(150, 163, 155);
+  border-radius: 3px;
+  margin-top: 1rem;
+}
+
+div.pkm-card-hdr > h3 {
+  margin: 0;
+  padding: 0.25em 0.5em;
+  width: 40%;
+  font-size: calc(12px + 1.5vw);
+}
+
+.pokemon-img {
+  width: 40%;
+  min-width: 100px;
+  max-width: 200px;
+  image-rendering: pixelated;
+  padding: 0px;
+}
+.pkm-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  background-color: rgb(181, 207, 191);
+  border: 2px solid rgb(150, 163, 155);
+}
+.add-btn {
+  border: none;
+}
+
+.fa-plus {
+  margin-top: 10px;
+  color: rgba(48, 48, 48, 0.726);
+  border: 1px solid rgb(181, 207, 191);
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.2s;
+}
+
 /* Catch-list */
 
 #catch-list {
@@ -93,4 +159,29 @@ p {
     rgb(130, 130, 130) 31% 43%,
     rgb(162, 162, 162) 43% 100%
   );
+}
+
+/* utility-classes */
+.pixel-corners {
+  clip-path: polygon(
+    0px 4px,
+    4px 4px,
+    4px 0px,
+    calc(100% - 4px) 0px,
+    calc(100% - 4px) 4px,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    4px calc(100% - 4px),
+    0px calc(100% - 4px)
+  );
+}
+
+.divider {
+  width: 90%;
+  margin: 0.75em;
+  border: 2px solid rgba(109, 30, 30, 0.575);
+  border-radius: 50%;
 }

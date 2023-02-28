@@ -16,19 +16,33 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Awesome fonts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <h1>This will be cool</h1>
     <div id="app-container">
-      <div id="pokedex">
+      <div id="pokedex" class="pixel-corners">
         <p>I will hold the pokemon!</p>
-        <div class="ds-container" id="top-ds-container">Loading. . .</div>
-        <div class="ds-container" id="bottom-ds-container">
+        <div class="ds-container pixel-corners" id="top-ds-container">
+          Loading. . .
+        </div>
+        <div class="ds-container pixel-corners" id="bottom-ds-container">
           Selected pokemon cards will be displayed here!
         </div>
       </div>
-      <div id="catch-list">I will hold the pokemon to catch!</div>
-      <div id="caught-list">I will hold the pokemon caught!</div>
+      <div id="catch-list" class="pixel-corners">
+        I will hold the pokemon to catch!
+      </div>
+      <div id="caught-list" class="pixel-corners">
+        I will hold the pokemon caught!
+      </div>
     </div>
   </body>
   <script src="script.js" type="module"></script>
