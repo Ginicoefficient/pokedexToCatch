@@ -57,7 +57,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(232, 56, 56);
-  border: 2px solid rgb(111, 35, 35);
+  border: 3px solid rgb(111, 35, 35);
   gap: 0.75em;
 }
 
@@ -175,12 +175,34 @@ div.pkm-card-footer > * {
 /* Catch-list */
 
 #catch-list {
+  border: 3px solid rgb(29, 57, 68);
   background-image: url("images/450px-Hoenn_Route_110.png");
   background-size: cover;
+  overflow: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 1em 2em; */
+  min-width: 140px;
+  flex-basis: 25%;
 }
 
+.catch-list-item {
+  width: 95%;
+  flex: stretch;
+}
+.catch-list-item > p {
+  background-color: rgb(181, 207, 191);
+  border: 2px solid rgb(150, 163, 155);
+  border-radius: 2px;
+  padding: 0.5em 1em;
+  margin: 0.5em auto;
+}
 /* Caught List */
 #caught-list {
+  border: 3px solid rgb(74, 77, 78);
+  flex-basis: 25%;
   background: linear-gradient(
     to right,
     rgb(162, 162, 162) 18%,

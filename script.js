@@ -108,12 +108,13 @@ function renderCatchList() {
     .map((pokemon) => {
       console.log(pokemon);
       return `
-    <div class="pkm-card-hdr pixel-corners">
-        <h3>${pokemon.name}</h3>
+    <div class="catch-list-item">
+         <p  class="pixel-corners">${pokemon.name}</p>
     </div>`;
     })
     .join("");
-  document.getElementById("catch-list").innerHTML = htmlString;
+  document.getElementById("catch-list").innerHTML =
+    `<h3>Pokemon To Catch</h3>` + htmlString;
 }
 
 //helper function that removes from catch list, adds to caught list
